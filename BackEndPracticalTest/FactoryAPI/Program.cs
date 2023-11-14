@@ -1,4 +1,3 @@
-using FactoryAPI.Data.Contexts;
 using FactoryAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
