@@ -4,6 +4,8 @@
     --display-text-color: #fff;
     --btn-font-size: 1.3rem;
 
+    --border-color: #8b9da95b;
+
     --background-primary-color:#ddd6f3;
     --background-secondary-color:#faaca8;
 }
@@ -44,7 +46,7 @@ body {
     aspect-ratio: 1/1;
     color: var(--btn-text-color);
     font-size: var(--btn-font-size);
-    border: 1px solid #8b9da95b;
+    border: 1px solid var(--border-color);
     background-color: rgb(39, 36, 36);
     mix-blend-mode: overlay;
 }
@@ -61,7 +63,7 @@ body {
     font-size: 3.5rem;
     box-sizing: border-box; 
     padding-right: .5rem;
-    border: 1px solid #8b9da95b;
+    border: 1px solid var(--border-color);
     border-bottom: none;
 }
 

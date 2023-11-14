@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", async () =>{
       const currencyDict = {};
       await GetCurrentCurrencyDict();
       
+
+      //Set max number of digits to display
+      //It makes the display more like a real calculator
       const maxNumOfDisplay = 12;
       //Get largest number with maxNumOfDisplay digits
       const maxNum = Math.pow(10, maxNumOfDisplay - 1) - 1;
@@ -22,8 +25,9 @@ document.addEventListener("DOMContentLoaded", async () =>{
       
         const num = parseInt(val);
       
-        //Button was a number
+        
         if (!isNaN(num)) {
+          //Button was a number
           if (clearDisplay) {
       
             //There is a operation queued
@@ -89,14 +93,13 @@ document.addEventListener("DOMContentLoaded", async () =>{
             clearDisplay = true;
             return;
           //#endregion
-      
           //Currency buttons
           default:
               handleCurrency(val);
         }
       
         function addToDisplay(num) {
-          updateDisplay(parseFloat(display.innerHTML + num));
+          updateDisplay(parseFloat(display.textContent + num));
         }
       
         //Update the display
@@ -104,7 +107,9 @@ document.addEventListener("DOMContentLoaded", async () =>{
           //Ensure we don't overflow the display
           if (num.toString().length >= maxNumOfDisplay) {
             
+            
               if(num.toString().includes(".")){
+                //Decrease the precision of the number
                   updateDisplay(num.toString().slice(0,-1));
                   return;
               }
@@ -112,7 +117,7 @@ document.addEventListener("DOMContentLoaded", async () =>{
       
             return;
           }
-          display.innerHTML = num;
+          display.textContent = num;
         }
       
         function handleOperations() {
