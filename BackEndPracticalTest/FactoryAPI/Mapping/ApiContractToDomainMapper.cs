@@ -15,5 +15,16 @@ namespace FactoryAPI.Mapping
                 Price = request.Price,
             };
         }
+
+        public static Item ToItem(this ItemUpdateRequest request)
+        {
+            return new Item()
+            {
+                Id = request.id,
+                Name = request.Item.Name,
+                Description = request.Item.Description,
+                Price = request.Item.Price,
+            };
+        }
     }
 }
