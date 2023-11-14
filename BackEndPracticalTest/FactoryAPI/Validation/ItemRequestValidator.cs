@@ -7,7 +7,7 @@ namespace FactoryAPI.Validation
     {
         public ItemRequestValidator()
         {
-            //00.01 => 999999999999999999.99
+            //A precision of 18 and scale of 2 digits allows us to represent prices from 00.01 up to 999999999999999999.99
             RuleFor(x => x.Price).PrecisionScale(18,2,false);
             RuleFor(x => x.Name).NotNull();
             RuleFor(x => x.Description).NotNull();

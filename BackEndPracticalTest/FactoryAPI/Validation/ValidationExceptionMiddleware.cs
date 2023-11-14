@@ -29,10 +29,12 @@ namespace FactoryAPI.Validation
                     Status = 400,
                     Extensions =
                     {
+                        //Identifier to find the request
                         ["traceId"] = context.TraceIdentifier
                     }
                 };
 
+                //Add Validation Errors to response
                 foreach (var failure in ex.Errors)
                 {
                     error.Errors.Add(new KeyValuePair<string, string[]>(

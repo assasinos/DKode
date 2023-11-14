@@ -19,6 +19,7 @@ namespace FactoryAPI.Controllers
         }
 
         // Create a new item
+        // [POST] api/Items
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ItemRequest request)
         {
@@ -35,6 +36,7 @@ namespace FactoryAPI.Controllers
         }
 
         // Retrieve a single item
+        // [GET] api/Items/{id}
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> Get([FromRoute] Guid id)
         {
@@ -49,8 +51,9 @@ namespace FactoryAPI.Controllers
         }
 
 
-        // Retrieve all items (only if you'll be using an ORM framework)
+        // Retrieve all items
         [HttpGet]
+        // [GET] api/Items/
         public async Task<IActionResult> GetAll()
         {
             var items = _dbContext.Items;
@@ -61,7 +64,7 @@ namespace FactoryAPI.Controllers
         }
 
         // Update an existing item
-
+        // [PUT] api/Items/{id}
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromMultiSource] ItemUpdateRequest request)
         {
@@ -85,6 +88,7 @@ namespace FactoryAPI.Controllers
         }
 
         // Delete an item
+        // [Delete] api/Items/{id}
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
