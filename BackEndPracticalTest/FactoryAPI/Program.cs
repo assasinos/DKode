@@ -1,11 +1,19 @@
 using FactoryAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using FluentValidation.AspNetCore;
+using FactoryAPI.Validation;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddFluentValidation(x =>
+{
+    x.RegisterValidatorsFromAssemblyContaining<Program>();
+    x.DisableDataAnnotationsValidation = true;
+}); ;
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -27,6 +35,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ValidationExceptionMiddleware>();
 
 app.MapControllers();
 
