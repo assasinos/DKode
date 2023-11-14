@@ -60,4 +60,7 @@
     <Folder Include="StoredProcedures" />
     <Folder Include="Functions" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Itmes.sql" />
+  </ItemGroup>
 </Project>
