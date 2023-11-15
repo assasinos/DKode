@@ -163,8 +163,9 @@ document.addEventListener("DOMContentLoaded", async () =>{
       }
       async function GetCurrentCurrencyDict(){
         await $.ajax({
-            //We could use 'http://api.nbp.pl/api/exchangerates/rates/{table}/{code}/' URl but that would send a request for every currency
-            url: 'http://api.nbp.pl/api/exchangerates/tables/A/',
+            //We could use 'http://api.nbp.pl/api/exchangerates/rates/{table}/{code}/{Date}/' URl but that would send a request for every currency
+            //Exchange rates are updated every working day so the last update before 12/11/2023 would be 10/11/2023
+            url: 'http://api.nbp.pl/api/exchangerates/tables/A/2023-11-10',
             type: "GET",
             dataType: "json",
             headers: {
@@ -179,6 +180,12 @@ document.addEventListener("DOMContentLoaded", async () =>{
                         currencyDict[rate.code] = rate.mid;
                     }
                 });
+            },
+            error: function () {
+                //Disable currency buttons
+                document.querySelectorAll('button[btntype="currency"]').forEach((btn) => {
+                    btn.disabled = true;
+                  });
             }
             });
       }

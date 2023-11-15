@@ -67,9 +67,9 @@ body {
     border-bottom: none;
 }
 
-.btn:hover{
+.btn:not([disabled]):hover{
     mix-blend-mode: soft-light;
 }
-.btn:active{
+.btn:not([disabled]):active{
     mix-blend-mode: color-dodge;
 }
